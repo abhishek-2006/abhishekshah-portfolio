@@ -13,7 +13,7 @@ export async function GET() {
     const projects = await Promise.all(
       repos.map(async (repo) => {
         const langRes = await fetch(repo.languages_url, {
-          headers: { "User-Agent": "portfolio" },
+          headers: { "User-Agent": "portfolio-app" },
         });
 
         const languages = await langRes.json();

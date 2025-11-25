@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import { motion, useCycle } from "framer-motion";
-import { Github, Linkedin, Instagram, Twitter } from "lucide-react";
+import { Github, Linkedin, Instagram} from "lucide-react";
+import { FaXTwitter as Twitter } from "react-icons/fa6";
 import Lottie from "lottie-react";
 import {ReactTyped} from "react-typed";
 
