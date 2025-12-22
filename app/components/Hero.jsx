@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   Github, 
   Linkedin, 
-  Twitter, 
   ArrowRight, 
   Sparkles, 
   Database,
   Code2,
   Smartphone
 } from "lucide-react";
+import { FaXTwitter as Twitter } from "react-icons/fa6";
 
 const Typewriter = ({ strings, typeSpeed = 50, backSpeed = 30, delayBetween = 2000 }) => {
   const [index, setIndex] = useState(0);
@@ -63,10 +63,10 @@ const floatAnimation = (delay = 0) => ({
 export default function App() {
   const roles = [
     "Next.js Development",
-    "Flutter Engineering",
+    "Flutter Development",
+    "Android App Development",
     "Full-Stack Development",
-    "UI/UX Design",
-    "Web Architecture",
+    "Web Development",
   ];
 
   return (
@@ -74,7 +74,6 @@ export default function App() {
       
       {/* --- BACKGROUND ARCHITECTURE --- */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Animated Mesh Gradients shifted to support left-image layout */}
         <motion.div
           animate={{ 
             scale: [1, 1.2, 1],
@@ -144,7 +143,7 @@ export default function App() {
               </motion.div>
             </div>
 
-            {/* --- FLOATING TECH NODES (Adjusted for left side) --- */}
+            {/* --- FLOATING TECH NODES --- */}
             <motion.div 
               {...floatAnimation(0.2)}
               className="absolute -right-8 top-4 p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl"
@@ -229,18 +228,7 @@ export default function App() {
             </div>
           </motion.div>
         </div>
-
       </div>
-
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 opacity-30"
-      >
-        <div className="w-5 h-8 border-2 border-white rounded-full flex justify-center p-1">
-          <div className="w-1 h-2 bg-white rounded-full" />
-        </div>
-      </motion.div>
     </section>
   );
 }

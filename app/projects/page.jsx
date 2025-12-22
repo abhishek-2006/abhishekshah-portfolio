@@ -84,7 +84,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-6xl md:text-8xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent leading-none"
+            className="text-6xl md:text-8xl font-black py-4 text-center bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent leading-none"
           >
             All Projects
           </motion.h1>
