@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Mail, 
@@ -62,7 +62,7 @@ export default function App() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-4 md:mb-6">
             <Sparkles size={12} className="animate-pulse" />
-            Let's Collaborate
+            Let&apos;s Collaborate
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 bg-gradient-to-r from-white via-blue-100 to-slate-400 bg-clip-text text-transparent">
             Get in Touch

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Zap, 
@@ -23,6 +23,7 @@ export default function App() {
         const data = await res.json();
         setProjects(data);
       } catch (err) {
+        console.error(err);
         // Fallback mock data for preview purposes
         setTimeout(() => {
           setProjects([
@@ -208,7 +209,7 @@ export default function App() {
             <div className="inline-block p-4 rounded-full bg-white/5 mb-4">
               <Code className="text-slate-600 w-8 h-8" />
             </div>
-            <p className="text-slate-500 text-xl italic font-medium">No projects found for "{selectedTag}" yet.</p>
+            <p className="text-slate-500 text-xl italic font-medium">No projects found for &quot;{selectedTag}&quot; yet.</p>
             <button 
               onClick={() => setSelectedTag("All")}
               className="mt-4 text-cyan-400 font-bold hover:underline"
