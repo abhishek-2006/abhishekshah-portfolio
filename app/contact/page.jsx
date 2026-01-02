@@ -81,7 +81,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-[100svh] w-full bg-[#030712] text-white pt-20 md:pt-32 pb-16 px-4 md:px-8 relative overflow-x-hidden selection:bg-blue-500/30 font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="min-h-[100svh] w-full bg-[#030712] text-white pt-20 md:pt-32 pb-16 px-4 md:px-8 relative overflow-hidden selection:bg-blue-500/30 font-['Plus_Jakarta_Sans',sans-serif]">
       {/* Background Aesthetic Glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-5%] left-[-10%] w-[60%] h-[40%] bg-blue-600/10 blur-[80px] md:blur-[120px] rounded-full animate-pulse" />
