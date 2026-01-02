@@ -95,6 +95,8 @@ export default function App() {
                 <Image
                   src="/profile.jpg"
                   alt="Abhishek Shah"
+                  width={700}
+                  height={700}
                   className="w-full h-full object-cover"
                   loading="eager"
                   onError={(e) => {

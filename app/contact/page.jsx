@@ -1,6 +1,5 @@
 "use client";
-
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Mail, 
@@ -11,19 +10,61 @@ import {
   Instagram, 
   Linkedin, 
   CheckCircle2,
-  Sparkles
+  Sparkles,
+  AlertCircle
 } from "lucide-react";
 
+/**
+ * Premium Contact Page
+ * Integrated with Nodemailer API and enhanced feedback UI.
+ */
 export default function App() {
-  const [formState, setFormState] = useState("idle"); // idle | sending | success
+  const [formState, setFormState] = useState("idle"); // idle | sending | success | error
 
-  const handleSubmit = (e) => {
+  const colors = {
+    blue400: "#60a5fa",
+    blue600: "#2563eb",
+    indigo600: "#4f46e5",
+    green500: "#22c55e",
+    rose400: "#fb7185",
+    green400: "#4ade80",
+    red500: "#ef4444"
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormState("sending");
-    // Simulate API delay
-    setTimeout(() => setFormState("success"), 2000);
-    // Reset after some time
-    setTimeout(() => setFormState("idle"), 5000);
+
+    // Gather data using standard form API
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setFormState("success");
+        e.target.reset();
+        // Return to idle after 8 seconds
+        setTimeout(() => setFormState("idle"), 8000);
+      } else {
+        setFormState("error");
+        setTimeout(() => setFormState("idle"), 5000);
+      }
+    } catch (err) {
+      console.error("Submission failed:", err);
+      setFormState("error");
+      setTimeout(() => setFormState("idle"), 5000);
+    }
   };
 
   const containerVariants = {
@@ -60,7 +101,7 @@ export default function App() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center max-w-2xl mx-auto mb-12 md:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-4 md:mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-4 md:mb-6" style={{ color: colors.blue400 }}>
             <Sparkles size={12} className="animate-pulse" />
             Let&apos;s Collaborate
           </div>
@@ -92,15 +133,15 @@ export default function App() {
 
               <div className="space-y-4 md:space-y-8">
                 {[
-                  { icon: <Mail className="text-blue-400 w-5 h-5 md:w-6 md:h-6" />, label: "Email", value: "shahabhishek051@gmail.com", href: "mailto:shahabhishek051@gmail.com" },
-                  { icon: <Phone className="text-green-400 w-5 h-5 md:w-6 md:h-6" />, label: "Phone", value: "+91 78610 53202", href: "tel:+917861053202" },
-                  { icon: <MapPin className="text-rose-400 w-5 h-5 md:w-6 md:h-6" />, label: "Location", value: "Gujarat, India", href: "#" }
+                  { icon: <Mail style={{ color: colors.blue400 }} className="w-5 h-5 md:w-6 md:h-6" />, label: "Email", value: "shahabhishek051@gmail.com", href: "mailto:shahabhishek051@gmail.com" },
+                  { icon: <Phone style={{ color: colors.green400 }} className="w-5 h-5 md:w-6 md:h-6" />, label: "Phone", value: "+91 78610 53202", href: "tel:+917861053202" },
+                  { icon: <MapPin style={{ color: colors.rose400 }} className="w-5 h-5 md:w-6 md:h-6" />, label: "Location", value: "Gujarat, India", href: "#" }
                 ].map((item, idx) => (
                   <motion.a
                     key={idx}
                     href={item.href}
                     whileHover={{ x: 5 }}
-                    className="flex items-center gap-6 md:gap-6 p-3 md:p-4 rounded-xl md:rounded-2xl hover:bg-white/5 transition-all border border-transparent hover:border-white/5"
+                    className="flex items-center gap-4 md:gap-6 p-3 md:p-4 rounded-xl md:rounded-2xl hover:bg-white/5 transition-all border border-transparent hover:border-white/5"
                   >
                     <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 shadow-inner shrink-0">
                       {item.icon}
@@ -151,39 +192,52 @@ export default function App() {
                 <div className="relative group">
                   <input
                     required
+                    name="name"
                     type="text"
                     placeholder="Your Full Name"
-                    className="w-full p-4 md:p-5 text-sm md:text-base rounded-xl md:rounded-2xl bg-white/5 border border-white/10 focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-600 font-medium focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full p-4 md:p-5 text-sm md:text-base rounded-xl md:rounded-2xl bg-white/5 border border-white/10 focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-600 font-medium focus:ring-4 focus:ring-blue-500/10 text-white"
                   />
                 </div>
 
                 <div className="relative group">
                   <input
                     required
+                    name="email"
                     type="email"
                     placeholder="Your Email Address"
-                    className="w-full p-4 md:p-5 text-sm md:text-base rounded-xl md:rounded-2xl bg-white/5 border border-white/10 focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-600 font-medium focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full p-4 md:p-5 text-sm md:text-base rounded-xl md:rounded-2xl bg-white/5 border border-white/10 focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-600 font-medium focus:ring-4 focus:ring-blue-500/10 text-white"
+                  />
+                </div>
+
+                <div className="relative group">
+                  <input
+                    required
+                    name="subject"
+                    type="text"
+                    placeholder="Subject"
+                    className="w-full p-4 md:p-5 text-sm md:text-base rounded-xl md:rounded-2xl bg-white/5 border border-white/10 focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-600 font-medium focus:ring-4 focus:ring-blue-500/10 text-white"
                   />
                 </div>
 
                 <div className="relative group">
                   <textarea
                     required
+                    name="message"
                     placeholder="Tell me about your project..."
                     rows="5"
-                    className="w-full p-4 md:p-5 text-sm md:text-base rounded-xl md:rounded-2xl bg-white/5 border border-white/10 focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-600 font-medium focus:ring-4 focus:ring-blue-500/10 resize-none"
+                    className="w-full p-4 md:p-5 text-sm md:text-base rounded-xl md:rounded-2xl bg-white/5 border border-white/10 focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-600 font-medium focus:ring-4 focus:ring-blue-500/10 resize-none text-white"
                   ></textarea>
                 </div>
 
                 <motion.button
                   disabled={formState !== "idle"}
                   type="submit"
+                  initial={false}
+                  animate={{ 
+                    backgroundColor: formState === "success" ? colors.green500 : formState === "error" ? colors.red500 : colors.blue600,
+                  }}
                   whileTap={{ scale: 0.98 }}
-                  className={`w-full py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-base md:text-lg flex items-center justify-center gap-2 md:gap-3 transition-all shadow-xl relative overflow-hidden ${
-                    formState === "success" 
-                      ? "bg-green-500 text-white" 
-                      : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-blue-500/20"
-                  }`}
+                  className="w-full py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-base md:text-lg flex items-center justify-center gap-2 md:gap-3 transition-shadow shadow-xl relative overflow-hidden text-white"
                 >
                   <AnimatePresence mode="wait">
                     {formState === "idle" && (
@@ -202,9 +256,40 @@ export default function App() {
                         Success! <CheckCircle2 size={18} />
                       </motion.div>
                     )}
+                    {formState === "error" && (
+                      <motion.div key="error" className="flex items-center gap-2" initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
+                        Failed to Send <AlertCircle size={18} />
+                      </motion.div>
+                    )}
                   </AnimatePresence>
                 </motion.button>
               </div>
+
+              {/* Status Message Display */}
+              <AnimatePresence>
+                {formState === "success" && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="mt-6 p-4 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center gap-3 text-green-400 text-sm font-medium"
+                  >
+                    <CheckCircle2 size={20} />
+                    <span>Message delivered! A thank-you email has been sent to your inbox.</span>
+                  </motion.div>
+                )}
+                {formState === "error" && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="mt-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center gap-3 text-red-400 text-sm font-medium"
+                  >
+                    <AlertCircle size={20} />
+                    <span>Failed to send message. Please check your connection or reach me via social links.</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               <p className="mt-6 md:mt-8 text-center text-slate-500 text-[10px] md:text-xs font-medium italic">
                 I typically respond within 24-48 hours.
