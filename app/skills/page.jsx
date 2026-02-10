@@ -13,7 +13,6 @@ import {
   ChevronRight
 } from "lucide-react";
 import { Icon } from "@iconify/react";
-import { Cpu } from "lucide-react";
 
 const TECH_STACK = [
   { name: "Next.js", icon: "logos:nextjs-icon", color: "#ffffff" },
@@ -28,37 +27,6 @@ const TECH_STACK = [
   { name: "GitHub", icon: "mdi:github", color: "#ffffff" }, // Updated to mdi:github for better visibility
 ];
 
-const SkillCard = ({ skill, index }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      viewport={{ once: true }}
-      className="group relative flex items-center justify-center p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:-translate-y-2 will-change-transform"
-    >
-      {/* Brand-Specific Glow Effect - Activates on hover */}
-      <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-2xl rounded-full scale-50 pointer-events-none"
-        style={{ backgroundColor: skill.color }}
-      />
-      
-      {/* Iconify Icon Container - Always Colored */}
-      <div className="relative z-10 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-        <Icon 
-          icon={skill.icon} 
-          className="w-full h-full object-contain"
-          style={{ color: skill.name === "GitHub" ? skill.color : undefined }}
-        />
-      </div>
-
-      {/* Tooltip Label */}
-      <span className="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[10px] font-bold uppercase tracking-widest text-cyan-400 pointer-events-none whitespace-nowrap">
-        {skill.name}
-      </span>
-    </motion.div>
-  );
-};
 
 const skills = [
     {
@@ -188,7 +156,7 @@ export default function App() {
             </div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold py-2 inline-block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent leading-[1.1] tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-extrabold py-2 inline-block bg-linear-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent leading-[1.1] tracking-tight">
             Skills & Technologies
           </h1>
           
@@ -211,7 +179,7 @@ export default function App() {
               key={index}
               variants={cardVariants}
               whileHover={{ y: -8 }}
-              className={`group relative p-[1px] rounded-[2rem] bg-gradient-to-b from-white/20 via-transparent to-transparent transition-all duration-500 shadow-2xl ${category.glow}`}
+              className={`group relative p-[1px] rounded-[2rem] bg-linear-to-b from-white/20 via-transparent to-transparent transition-all duration-500 shadow-2xl ${category.glow}`}
             >
               <div className="h-full rounded-[2rem] bg-slate-950/90 backdrop-blur-3xl p-7 flex flex-col border border-white/5 overflow-hidden">
                 {/* Visual Flair Background Icon */}
@@ -220,10 +188,10 @@ export default function App() {
                 </div>
 
                 <div className="flex items-center gap-4 mb-8 relative z-10">
-                  <div className={`p-3 rounded-2xl bg-gradient-to-br ${category.color} shadow-lg ring-1 ring-white/20`}>
+                  <div className={`p-3 rounded-2xl bg-linear-to-br ${category.color} shadow-lg ring-1 ring-white/20`}>
                     {React.cloneElement(category.icon, { className: "w-6 h-6 text-white" })}
                   </div>
-                  <h2 className={`text-2xl font-bold bg-gradient-to-r ${category.color} text-transparent bg-clip-text`}>
+                  <h2 className={`text-2xl font-bold bg-linear-to-r ${category.color} text-transparent bg-clip-text`}>
                     {category.title}
                   </h2>
                 </div>
@@ -236,7 +204,7 @@ export default function App() {
                       whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.12)" }}
                       className="px-4 py-2 rounded-xl bg-white/5 text-slate-300 text-sm font-semibold border border-white/5 backdrop-blur-md transition-all cursor-default flex items-center gap-2 group/chip"
                     >
-                      <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.color} shadow-[0_0_8px_rgba(255,255,255,0.2)] group-hover/chip:scale-125 transition-transform`} />
+                      <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${category.color} shadow-[0_0_8px_rgba(255,255,255,0.2)] group-hover/chip:scale-125 transition-transform`} />
                       {skill}
                     </motion.span>
                   ))}
@@ -248,7 +216,7 @@ export default function App() {
           {/* Closing/Evolution Card */}
           <motion.div
             variants={cardVariants}
-            className="lg:col-span-1 p-[1px] rounded-[2rem] bg-gradient-to-tr from-cyan-500/30 via-purple-500/30 to-rose-500/30"
+            className="lg:col-span-1 p-[1px] rounded-[2rem] bg-linear-to-tr from-cyan-500/30 via-purple-500/30 to-rose-500/30"
           >
             <div className="h-full rounded-[2rem] bg-slate-950/90 backdrop-blur-3xl p-8 flex flex-col justify-center items-center text-center">
               <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 border border-white/10">
@@ -266,8 +234,8 @@ export default function App() {
           {/* The Halo Container */}
           <div className="relative w-full max-w-[800px] aspect-square flex items-center justify-center">
             {/* Dynamic background rings */}
-            <div className="absolute inset-[25%] rounded-full border border-white/[0.03] animate-[spin_60s_linear_infinite]" />
-            <div className="absolute inset-[50%] rounded-full border border-white/[0.05] animate-[spin_40s_linear_infinite_reverse]" />
+            <div className="absolute inset-[25%] rounded-full border border-white/3 animate-[spin_60s_linear_infinite]" />
+            <div className="absolute inset-[50%] rounded-full border border-white/5 animate-[spin_40s_linear_infinite_reverse]" />
             
             {/* Center Brand / Signature */}
             <motion.div 

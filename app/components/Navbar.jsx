@@ -26,7 +26,7 @@ export default function Navbar() {
         {/* LOGO */}
         <Link
           href="/"
-          className="text-2xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400"
+          className="text-2xl font-extrabold tracking-tight text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-indigo-400"
         >
           &lt;A.S /&gt;
         </Link>
@@ -47,7 +47,7 @@ export default function Navbar() {
 
                 {/* underline */}
                 <span
-                  className={`absolute left-0 -bottom-1 h-[2px] bg-indigo-400 transition-all ${
+                  className={`absolute left-0 -bottom-1 h-0.5 bg-indigo-400 transition-all ${
                     isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 ></span>

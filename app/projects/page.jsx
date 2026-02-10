@@ -109,7 +109,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-6xl md:text-8xl font-black py-4 text-center bg-gradient-to-r from-white via-cyan-100 to-blue-400 bg-clip-text text-transparent leading-none"
+            className="text-6xl md:text-8xl font-black py-4 text-center bg-linear-to-r from-white via-cyan-100 to-blue-400 bg-clip-text text-transparent leading-none"
           >
             My Projects
           </motion.h1>
@@ -148,7 +148,7 @@ export default function App() {
         >
           {!projects &&
             [...Array(6)].map((_, i) => (
-              <div key={i} className="h-[380px] bg-white/5 rounded-[2rem] border border-white/10 animate-pulse" />
+              <div key={i} className="h-95 bg-white/5 rounded-4xl border border-white/10 animate-pulse" />
             ))}
 
           <AnimatePresence mode="popLayout">
@@ -161,13 +161,13 @@ export default function App() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 whileHover={{ y: -10 }}
-                className={`group relative p-[1px] rounded-[2rem] transition-all shadow-2xl overflow-hidden ${
+                className={`group relative p-px rounded-4xl transition-all shadow-2xl overflow-hidden ${
                   project.isGame 
-                  ? 'bg-gradient-to-br from-cyan-500/40 via-transparent to-transparent border-cyan-500/30' 
-                  : 'bg-gradient-to-br from-white/20 via-transparent to-transparent border-white/5'
+                  ? 'bg-linear-to-br from-cyan-500/40 via-transparent to-transparent border-cyan-500/30' 
+                  : 'bg-linear-to-br from-white/20 via-transparent to-transparent border-white/5'
                 }`}
               >
-                <div className={`h-full rounded-[2rem] backdrop-blur-xl p-8 flex flex-col border border-white/5 min-h-[420px] ${
+                <div className={`h-full rounded-4xl backdrop-blur-xl p-8 flex flex-col border border-white/5 min-h-105 ${
                   project.isGame ? 'bg-cyan-950/20' : 'bg-slate-950/80'
                 }`}>
                   
@@ -225,7 +225,7 @@ export default function App() {
                 </div>
                 
                 {/* Interactive Hover Glow */}
-                <div className={`absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-tr ${
+                <div className={`absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-tr ${
                   project.isGame ? 'from-cyan-500/20 to-transparent' : 'from-cyan-500/10 to-transparent'
                 }`} />
               </motion.div>

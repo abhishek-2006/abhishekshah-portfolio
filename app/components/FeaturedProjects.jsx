@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Zap, Github, ArrowRight, Gamepad2 } from 'lucide-react';
+import { ExternalLink, Zap, Github, Gamepad2 } from 'lucide-react';
 
 const COLORS = {
   cyan400: "#22d3ee",
@@ -49,9 +49,9 @@ const ProjectCard = ({ project, i }) => {
       transition={{ duration: 0.6, delay: i * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ y: -8 }}
-      className="group relative p-[1px] rounded-[2rem] bg-gradient-to-b from-white/20 via-transparent to-transparent transition-all duration-500 shadow-2xl"
+      className="group relative p-px rounded-4xl bg-linear-to-b from-white/20 via-transparent to-transparent transition-all duration-500 shadow-2xl"
     >
-      <div className="relative h-full rounded-[2rem] bg-slate-950/80 backdrop-blur-3xl p-8 flex flex-col border border-white/5 overflow-hidden">
+      <div className="relative h-full rounded-4xl bg-slate-950/80 backdrop-blur-3xl p-8 flex flex-col border border-white/5 overflow-hidden">
         
         <div className="absolute -right-4 -top-4 text-white/5 scale-[2.5] group-hover:text-white/10 transition-all duration-700 -rotate-12 group-hover:rotate-0">
           {project.isGame ? <Gamepad2 size={48} /> : <Zap size={48} />}
@@ -85,7 +85,7 @@ const ProjectCard = ({ project, i }) => {
           {project.title}
         </h3>
 
-        <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow relative z-10">
+        <p className="text-slate-400 text-sm leading-relaxed mb-8 grow relative z-10">
           {project.desc}
         </p>
 
@@ -110,7 +110,7 @@ export default function App() {
             <Zap size={14} className="animate-pulse" />
             Curated Showcase
           </div>
-          <h2 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-white via-slate-200 to-slate-500 bg-clip-text text-transparent leading-none mb-6">
+          <h2 className="text-5xl md:text-7xl py-4 font-black bg-linear-to-r from-white via-slate-200 to-slate-500 bg-clip-text text-transparent leading-none mb-6">
             Featured Projects
           </h2>
         </header>

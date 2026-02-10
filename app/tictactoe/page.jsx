@@ -92,8 +92,8 @@ export default function TicTacToePage() {
       
       {/* Background Mesh Gradients */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-cyan-600/10 blur-[140px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-indigo-600/10 blur-[140px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-[-10%] right-[-10%] w-150 h-150 bg-cyan-600/10 blur-[140px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-150 h-150 bg-indigo-600/10 blur-[140px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-12 relative z-10">
@@ -137,7 +137,7 @@ export default function TicTacToePage() {
           >
             <div className="absolute inset-0 bg-cyan-500/20 blur-[100px] rounded-full scale-75" />
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-500 to-indigo-600 rounded-[4rem] blur opacity-30 group-hover:opacity-60 transition duration-1000" />
+              <div className="absolute -inset-1 bg-linear-to-tr from-cyan-500 to-indigo-600 rounded-[4rem] blur opacity-30 group-hover:opacity-60 transition duration-1000" />
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-[4rem] bg-slate-900 border border-white/10 p-2 overflow-hidden shadow-2xl">
                 <Image
                   src={game.logo} 
@@ -168,7 +168,7 @@ export default function TicTacToePage() {
                 <Zap size={12} className="fill-current" />
                 Latest Enhancement Pack
               </motion.div>
-              <h1 className="bg-gradient-to-r from-white via-cyan-100 to-indigo-400 bg-clip-text text-transparent text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] italic">
+              <h1 className="bg-linear-to-r from-white via-cyan-100 to-indigo-400 bg-clip-text text-transparent text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] italic">
                 {game.title}<br/>
                 <span className="text-cyan-400 opacity-90">{game.subtitle}</span>
               </h1>
@@ -198,7 +198,7 @@ export default function TicTacToePage() {
         <div className="grid lg:grid-cols-12 gap-8 mb-32">
           
           {/* Primary Action */}
-          <div className="lg:col-span-8 p-[1px] rounded-[3rem] bg-gradient-to-br from-white/20 via-transparent to-transparent shadow-2xl">
+          <div className="lg:col-span-8 p-px rounded-[3rem] bg-linear-to-br from-white/20 via-transparent to-transparent shadow-2xl">
             <div className="relative bg-slate-950/60 backdrop-blur-3xl border border-white/5 rounded-[3rem] p-10 md:p-16 overflow-hidden">
               <div className="absolute top-0 right-0 p-10 opacity-5">
                 <Download size={200} />
@@ -216,7 +216,7 @@ export default function TicTacToePage() {
                     disabled={isDownloading}
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`group relative w-full sm:w-auto px-12 py-6 rounded-[2rem] font-black text-sm tracking-[0.2em] flex items-center justify-center gap-4 transition-all shadow-2xl ${
+                    className={`group relative w-full sm:w-auto px-12 py-6 rounded-4xl font-black text-sm tracking-[0.2em] flex items-center justify-center gap-4 transition-all shadow-2xl ${
                       isDownloading ? 'bg-green-500 text-white' : 'bg-white text-black hover:bg-cyan-400'
                     }`}
                   >
@@ -272,7 +272,7 @@ export default function TicTacToePage() {
         <div className="space-y-12 mb-32">
           <div className="flex items-center gap-6">
             <h3 className="text-3xl font-black italic uppercase tracking-tighter">Enhancements</h3>
-            <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+            <div className="h-px flex-1 bg-linear-to-r from-white/10 to-transparent" />
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

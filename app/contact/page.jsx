@@ -77,7 +77,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-[100svh] w-full bg-[#030712] text-white pt-20 md:pt-32 pb-16 px-4 md:px-8 relative overflow-hidden selection:bg-blue-500/30 font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="min-h-svh w-full bg-[#030712] text-white pt-20 md:pt-32 pb-16 px-4 md:px-8 relative overflow-hidden selection:bg-blue-500/30 font-['Plus_Jakarta_Sans',sans-serif]">
       {/* Background Aesthetic Glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-5%] left-[-10%] w-[60%] h-[40%] bg-blue-600/10 blur-[80px] md:blur-[120px] rounded-full animate-pulse" />
@@ -101,7 +101,7 @@ export default function App() {
             <Sparkles size={12} className="animate-pulse" />
             Let&apos;s Collaborate
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 bg-gradient-to-r from-white via-blue-100 to-slate-400 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 bg-linear-to-r from-white via-blue-100 to-slate-400 bg-clip-text text-transparent">
             Get in Touch
           </h1>
           <p className="text-base md:text-xl text-slate-400 leading-relaxed font-medium px-4">
@@ -119,12 +119,12 @@ export default function App() {
           
           {/* LEFT: Info Card Side */}
           <motion.div variants={itemVariants}>
-            <div className="h-full p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-2xl relative overflow-hidden group">
+            <div className="h-full p-6 md:p-10 rounded-4xl md:rounded-[2.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-2xl relative overflow-hidden group">
               <div className="absolute -right-10 -top-10 w-32 h-32 md:w-40 md:h-40 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-colors duration-700" />
               
               <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-10 flex items-center gap-3">
                 Contact Info
-                <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
+                <div className="h-px flex-1 bg-linear-to-r from-white/20 to-transparent" />
               </h2>
 
               <div className="space-y-4 md:space-y-8">
@@ -180,7 +180,7 @@ export default function App() {
           <motion.div variants={itemVariants}>
             <form 
               onSubmit={handleSubmit}
-              className="h-full p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-slate-950/50 backdrop-blur-3xl border border-white/10 shadow-2xl relative"
+              className="h-full p-6 md:p-10 rounded-4xl md:rounded-[2.5rem] bg-slate-950/50 backdrop-blur-3xl border border-white/10 shadow-2xl relative"
             >
               <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Send a Message</h2>
               

@@ -14,7 +14,7 @@ const COLORS = {
   white: "#ffffff"
 };
 
-const Typewriter = ({ strings, typeSpeed = 50, backSpeed = 30, loop = true }) => {
+const Typewriter = ({ strings, typeSpeed = 50, backSpeed = 30 }) => {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -43,7 +43,7 @@ const Typewriter = ({ strings, typeSpeed = 50, backSpeed = 30, loop = true }) =>
 
     const timer = setTimeout(handleType, typingSpeed);
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, loopNum, strings, typeSpeed, backSpeed]);
+  }, [displayText, isDeleting, loopNum, strings, typingSpeed, typeSpeed, backSpeed]);
 
   return (
     <span className="text-gray-200">
@@ -71,7 +71,7 @@ const Card = ({ children, delay }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="p-[1px] rounded-2xl bg-gradient-to-r from-cyan-500/40 to-blue-500/20 
+      className="p-px rounded-2xl bg-linear-to-r from-cyan-500/40 to-blue-500/20 
         shadow-2xl hover:shadow-cyan-500/30 transition-shadow duration-500"
     >
       <div className="bg-gray-900/80 backdrop-blur-xl rounded-2xl p-6 md:p-8 
@@ -125,7 +125,7 @@ export default function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-5xl md:text-7xl font-extrabold py-4 text-center 
-            bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text
+            bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text
             text-transparent leading-light"
         >
           My Story
@@ -146,7 +146,7 @@ export default function App() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="relative"
           >
-            <div className="w-40 h-40 md:w-52 md:h-52 rounded-full p-[4px] bg-gradient-to-r from-cyan-400 to-blue-500 shadow-2xl shadow-cyan-500/20">
+            <div className="w-40 h-40 md:w-52 md:h-52 rounded-full p-px bg-linear-to-r from-cyan-400 to-blue-500 shadow-2xl shadow-cyan-500/20">
               <div className="w-full h-full rounded-full overflow-hidden bg-slate-800 border-4 border-slate-900">
                 <Image
                   src="/profile.jpg"
@@ -168,7 +168,7 @@ export default function App() {
               <h2 className="text-sm font-bold tracking-[0.2em] uppercase">Bio</h2>
             </div>
 
-            <div className="text-xl md:text-2xl text-gray-300 leading-relaxed min-h-[160px] md:min-h-[120px]">
+            <div className="text-xl md:text-2xl text-gray-300 leading-relaxed min-h-40 md:min-h-30">
               <Typewriter
                 strings={[
                   "I'm Abhishek, a Computer Engineering student who loves building clean UI, smooth apps, and fast backends.",
@@ -182,9 +182,9 @@ export default function App() {
 
         {/* SEPARATOR */}
         <div className="my-24 flex items-center justify-center gap-4">
-          <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-indigo-500/30"></div>
+          <div className="h-1px flex-1 bg-linear-to-r from-transparent to-indigo-500/30"></div>
           <Award className="w-6 h-6 text-indigo-500/50" />
-          <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-indigo-500/30"></div>
+          <div className="h-px flex-1 bg-linear-to-l from-transparent to-indigo-500/30"></div>
         </div>
 
         {/* Background Aesthetic Elements */}
@@ -213,7 +213,7 @@ export default function App() {
               <div className="flex flex-col md:flex-row justify-between items-start gap-6">
                 <div className="flex items-start gap-6 group">
                   {/* Icon Container */}
-                  <div className={`p-4 rounded-2xl bg-gradient-to-br ${edu.color} border border-white/5 shadow-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`p-4 rounded-2xl bg-linear-to-br ${edu.color} border border-white/5 shadow-xl shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                     {edu.icon}
                   </div>
                   
@@ -249,7 +249,7 @@ export default function App() {
         <div className="mt-24 text-center">
           <a 
             href="/projects" 
-            className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-full hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
+            className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-linear-to-r from-cyan-600 to-blue-700 rounded-full hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
           >
             <span className="relative flex items-center gap-2">
               See My Projects

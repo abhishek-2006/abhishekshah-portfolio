@@ -89,7 +89,7 @@ export default function App() {
             className="relative gpu-accelerate"
           >
             {/* Glow beneath profile */}
-            <div className="absolute inset-0 bg-cyan-500/15 blur-[40px] rounded-full animate-pulse" />
+            <div className="absolute inset-0 bg-cyan-500/15 blur-2xl rounded-full animate-pulse" />
 
             <div className="relative z-10 p-1.5 md:p-2 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-sm">
               <div className="relative rounded-[2.3rem] overflow-hidden border-2 md:border-4 border-slate-900 bg-slate-800 w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80">
@@ -146,12 +146,12 @@ export default function App() {
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.1] mb-6 text-white tracking-tight">
               Hi, I’m{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">
+              <span className="bg-clip-text text-transparent bg-linear-to-r from-cyan-400 via-blue-400 to-indigo-400">
                 Abhishek Shah
               </span>
             </h1>
 
-            <div className="text-xl md:text-3xl text-slate-400 mb-8 font-medium min-h-[40px]">
+            <div className="text-xl md:text-3xl text-slate-400 mb-8 font-medium min-h-10">
               Focused on{" "}
               <span className="text-cyan-400 font-bold border-b-2 border-cyan-500/20 pb-1">
                 <Typewriter strings={roles} />
@@ -166,14 +166,14 @@ export default function App() {
             <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center">
               <a 
                 href="/tictactoe"
-                className="group w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold text-[#030712] flex items-center justify-center gap-2 shadow-xl transition-all active:scale-95"
+                className="group w-full sm:w-auto px-8 py-3.5 bg-linear-to-r from-cyan-500 to-blue-600 rounded-xl font-bold text-[#030712] flex items-center justify-center gap-2 shadow-xl transition-all active:scale-95"
               >
                 Play My New Game
                 <Gamepad2 size={18} />
               </a>
               <a 
                 href="/projects"
-                className="group w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold text-[#030712] flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95"
+                className="group w-full sm:w-auto px-8 py-3.5 bg-linear-to-r from-cyan-500 to-blue-600 rounded-xl font-bold text-[#030712] flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95"
               >
                 See My Projects
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

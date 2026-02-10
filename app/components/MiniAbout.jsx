@@ -93,13 +93,13 @@ export default function MiniAbout() {
         </motion.div>
 
         {/* Heading */}
-        <h2 className="text-5xl md:text-7xl font-black mb-10 bg-gradient-to-r from-white via-slate-200 to-slate-500 bg-clip-text text-transparent leading-tight tracking-tight">
+        <h2 className="text-5xl md:text-7xl font-black mb-10 bg-linear-to-r from-white via-slate-200 to-slate-500 bg-clip-text text-transparent leading-tight tracking-tight">
           Who Am I?
         </h2>
 
         {/* Typed Description Card */}
-        <div className="relative mb-16 p-[1px] rounded-[2rem] bg-gradient-to-b from-white/10 via-transparent to-transparent">
-          <div className="p-8 md:p-12 rounded-[2rem] bg-slate-950/40 backdrop-blur-3xl border border-white/5 shadow-2xl">
+        <div className="relative mb-16 p-px rounded-4xl bg-linear-to-b from-white/10 via-transparent to-transparent">
+          <div className="p-8 md:p-12 rounded-4xl bg-slate-950/40 backdrop-blur-3xl border border-white/5 shadow-2xl">
             <p className="text-lg md:text-2xl leading-relaxed text-slate-300 font-medium tracking-tight">
               <Typewriter 
                 text="I'm a developer who genuinely enjoys the craft—building apps, websites, and systems that matter. If it involves code, I'm already interested. I focus on turning complex problems into clean, smooth, and highly practical digital experiences." 
