@@ -66,6 +66,7 @@ export async function POST(req) {
           <p style="font-size: 16px;">In the meantime, feel free to explore more of my work:</p>
           <div style="margin-bottom: 30px;">
             <a href="https://github.com/abhishek-2006" style="margin-right: 15px; color: #2563eb; text-decoration: none; font-weight: bold;">GitHub</a>
+            <a href="https://x.com/shahabhishek409" style="margin-right: 15px; color: #2563eb; text-decoration: none; font-weight: bold;">Twitter</a>
             <a href="https://linkedin.com/in/abhishek-shah-aa1346326/" style="margin-right: 15px; color: #2563eb; text-decoration: none; font-weight: bold;">LinkedIn</a>
             <a href="https://instagram.com/abhishekshah_112" style="color: #2563eb; text-decoration: none; font-weight: bold;">Instagram</a>
           </div>
