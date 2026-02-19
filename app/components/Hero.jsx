@@ -47,11 +47,6 @@ const Typewriter = ({ strings, typeSpeed = 50, backSpeed = 30, delayBetween = 20
   );
 };
 
-export const metadata = {
-  title: "Home - Abhishek Shah",
-  description: "Welcome to my portfolio! I'm Abhishek Shah, a passionate full-stack developer and mobile game designer. Explore my projects, skills, and get in touch to collaborate on exciting opportunities.",
-};
-
 export default function App() {
   const roles = useMemo(() => [
     "Next.js Development",

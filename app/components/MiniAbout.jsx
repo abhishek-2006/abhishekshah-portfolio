@@ -39,11 +39,6 @@ const Typewriter = ({ text, speed = 30, delay = 500 }) => {
   );
 };
 
-export const metadata = {
-  title: "Home - Abhishek Shah",
-  description: "Welcome to my portfolio! I'm Abhishek Shah, a passionate full-stack developer and mobile game designer. Explore my projects, skills, and get in touch to collaborate on exciting opportunities.",
-};
-
 export default function MiniAbout() {
   const pillars = [
     {

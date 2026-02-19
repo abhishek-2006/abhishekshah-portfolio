@@ -14,11 +14,6 @@ import {
   AlertCircle
 } from "lucide-react";
 
-export const metadata = {
-  title: "Contact - Abhishek Shah",
-  description: "Get in touch with me! Whether you have a project idea, want to discuss tech, or just say hi, I’d love to hear from you. My inbox is always open for collaborations and conversations.",
-};
-
 export default function App() {
   const [formState, setFormState] = useState("idle"); 
 

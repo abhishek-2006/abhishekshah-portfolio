@@ -12,11 +12,6 @@ import {
   Download
 } from "lucide-react";
 
-export const metadata = {
-  title: "Projects - Abhishek Shah",
-  description: "A showcase of my projects, highlighting my expertise in full-stack development and mobile game design. Explore my GitHub repositories and live demos.",
-};
-
 export default function App() {
   const [projects, setProjects] = useState(null);
   const [selectedTag, setSelectedTag] = useState("All");

@@ -126,11 +126,6 @@ const HaloItem = ({ skill, index, total }) => {
   );
 };
 
-export const metadata = {
-  title: "Skills & Tech Stack - Abhishek Shah",
-  description: "Explore my technical skills and expertise in frontend, backend, mobile development, databases, and tools. A comprehensive overview of the technologies I use to create seamless digital experiences.",
-};
-
 export default function App() {
   return (
 
