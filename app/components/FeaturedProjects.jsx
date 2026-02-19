@@ -101,6 +101,11 @@ const ProjectCard = ({ project, i }) => {
   );
 };
 
+export const metadata = {
+  title: "Featured Projects - Abhishek Shah",
+  description: "A curated showcase of my standout projects, highlighting my expertise in full-stack development and mobile game design. Explore detailed descriptions, tech stacks, and links to GitHub repositories and live demos."
+};
+
 export default function App() {
   return (
     <section className="relative w-full py-24 px-6 overflow-hidden bg-[#030712] selection:bg-cyan-500/30">

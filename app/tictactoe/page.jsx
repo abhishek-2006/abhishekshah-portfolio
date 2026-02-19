@@ -19,10 +19,14 @@ import {
   Settings,
 } from 'lucide-react';
 
+export const metadata = {
+  title: "TicTacToe - Abhishek Shah",
+  description: "Experience the ultimate TicTacToe enhancement pack. Download the APK for Android and enjoy advanced AI, a sleek neo-dark UI, and instant play. Challenge friends in local PvP mode. Get it now!"
+};
+
 export default function TicTacToePage() {
   const [isDownloading, setIsDownloading] = useState(false);
 
-  // --- CONFIGURATION ---
   const game = {
     title: "TicTacToe",
     version: "v1.3.0-stable",

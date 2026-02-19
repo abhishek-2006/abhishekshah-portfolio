@@ -1,24 +1,155 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { Analytics } from "@vercel/analytics/next"
 
+const siteConfig = {
+  name: "Abhishek Shah",
+  title: "Abhishek Shah - Professional Portfolio & Full-Stack Developer",
+  description:
+    "Welcome to my portfolio! I'm Abhishek Shah, a passionate full-stack developer and mobile game designer. Explore my projects, skills, and get in touch to collaborate on exciting ventures. Discover high-performance projects and innovative solutions. Connect to collaborate on exciting ventures in web and game development.",
+  url: "https://abhishekshah-portfolio.vercel.app",
+  image: "https://abhishekshah-portfolio.vercel.app/profile.jpg",
+  keywords: [
+    "Abhishek", 
+    "Abhishek Shah", 
+    "Portfolio", 
+    "Vercel", 
+    "Portfolio Vercel", 
+    "Abhishek Shah Portfolio", 
+    "Projects", 
+    "Abhishek Shah Projects",
+    "Software Engineer", 
+    "Web Developer",
+    "Flutter Developer", 
+    "TicTacToe",
+    "TicTacToe Game", 
+    "Bardoli", 
+    "Gujarat"
+  ],
+};
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#030712" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
-  title: "Abhishek Shah - Portfolio",
-  description: "Personal Portfolio",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name} Portfolio`,
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    siteName: "Abhishek Shah Portfolio",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.image,
+        width: 1200,
+        height: 630,
+        alt: "Abhishek Shah - Full Stack Developer Portfolio",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ["/profile.jpg"],
+    creator: "@shahabhishek409",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
+  },
+
+  other: {
+    "platform": "Vercel",
+    generator: "Next.js",
+    "author": "Abhishek Shah",
+    "publisher": "Abhishek Shah",
+    "theme-color": "#1a1a1a",
+  },
 };
+
+function JsonLd() {
+  const personSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Abhishek Shah",
+      "jobTitle": "Full-Stack Developer",
+      "url": "https://abhishekshah-portfolio.vercel.app",
+      "image": "https://abhishekshah-portfolio.vercel.app/profile.jpg",
+      "sameAs": [
+        "https://github.com/abhishek-2006",
+        "https://www.linkedin.com/in/abhishek-shah-aa1346326/",
+        "https://x.com/shahabhishek409",
+        "https://www.instagram.com/abhishekshah_112/"
+      ]
+    },
+  ];
+  const websiteSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Abhishek Shah Portfolio",
+      "url": "https://abhishekshah-portfolio.vercel.app",
+      "description": "Welcome to my portfolio! I'm Abhishek Shah, a passionate full-stack developer. Explore my projects, skills, and get in touch to collaborate on exciting ventures. Discover high-performance projects and innovative solutions. Connect to collaborate on exciting ventures in web and game development.",
+      "keywords": "Abhishek, Abhishek Shah, Portfolio, Vercel, Portfolio Vercel, Abhishek Shah Portfolio, Projects, Abhishek Shah Projects, Software Engineer, Web Developer, Flutter Developer, TicTacToe, TicTacToe Game, Bardoli, Gujarat",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://abhishekshah-portfolio.vercel.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+  ];
+  const gameSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type" : "SoftwareApplication",
+      "name" : "TicTacToe Game",
+      "operatingSystem" : "Android",
+      "applicationCategory" : "Game",
+      "description" : "TicTacToe is a simple and addictive game developed by Abhishek Shah. It offers a fun and engaging experience for players of all ages. The game features a clean and intuitive interface, allowing users to easily play against the computer or with friends. With its smooth gameplay and strategic elements, TicTacToe provides hours of entertainment. Download now and challenge yourself to become the ultimate TicTacToe champion!",
+      "image" : "https://abhishekshah-portfolio.vercel.app/tictactoe-logo.png",
+    },
+  ];
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify([personSchema, websiteSchema, gameSchema]) }}
+    />
+  );
+}
 
 export default function RootLayout({
   children,
@@ -26,8 +157,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="scroll-smooth dark">
       <body className="bg-[#1a1a1a] text-white">
+        <JsonLd />
         <Navbar/>
         <div className="pt-[0px]">{children}</div>
         <Analytics/>

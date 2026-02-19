@@ -83,6 +83,11 @@ const Card = ({ children, delay }) => {
   );
 };
 
+export const metadata = {
+  title: "About Me - Abhishek Shah",
+  description: "Learn more about me, Abhishek Shah, a passionate full-stack developer. Discover my background, skills, and what drives me to create seamless digital experiences.",
+};
+
 export default function App() {
   const education = [
     {
