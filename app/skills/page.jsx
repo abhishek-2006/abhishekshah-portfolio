@@ -21,12 +21,11 @@ const TECH_STACK = [
   { name: "React", icon: "logos:react", color: "#61DAFB" },
   { name: "PHP", icon: "logos:php", color: "#777BB4" },
   { name: "MySQL", icon: "logos:mysql-icon", color: "#4479A1" },
-  { name: "JavaScript", icon: "logos:javascript", color: "#F7DF1E" },
+  { name: "Bootstrap", icon: "logos:bootstrap", color: "#7952B3" },
   { name: "Node.js", icon: "logos:nodejs-icon", color: "#339933" },
   { name: "Tailwind", icon: "logos:tailwindcss-icon", color: "#06B6D4" },
-  { name: "GitHub", icon: "mdi:github", color: "#ffffff" }, // Updated to mdi:github for better visibility
+  { name: "GitHub", icon: "mdi:github", color: "#ffffff" },
 ];
-
 
 const skills = [
     {
@@ -34,7 +33,7 @@ const skills = [
       icon: <Code2 className="w-6 h-6" />,
       color: "from-cyan-500 to-blue-500",
       glow: "shadow-cyan-500/20",
-      items: ["HTML", "CSS", "JavaScript", "Next.js", "Tailwind", "React", "Bootstrap"],
+      items: ["HTML", "CSS", "Next.js", "Tailwind", "React", "Bootstrap"],
     },
     {
       title: "Backend",
@@ -79,9 +78,9 @@ const skills = [
     visible: { opacity: 1, y: 0 },
   };
 
-const HaloItem = ({ skill, index, total }) => {
+const HaloItem = ({ skill, index, total, isMobile }) => {
   const angle = (index / total) * (2 * Math.PI);
-  const radius = skill.size === 'lg' ? 40 : skill.size === 'md' ? 32 : 22;
+  const radius = isMobile ? 40 : (skill.size === 'lg' ? 38 : skill.size === 'md' ? 30 : 22);
   
   return (
     <motion.div
@@ -127,8 +126,17 @@ const HaloItem = ({ skill, index, total }) => {
 };
 
 export default function App() {
-  return (
+  const [isMobile, setIsMobile] = React.useState(false);
 
+  React.useEffect(() => {
+    const checkRes = () => setIsMobile(window.innerWidth < 768);
+    checkRes();
+    window.addEventListener('resize', checkRes);
+    return () => window.removeEventListener('resize', checkRes);
+  }, []);
+
+  return (
+    
     <div className="min-h-screen w-full bg-[#030712] text-white pt-16 pb-20 px-6 relative overflow-hidden selection:bg-purple-500/30">
       {/* Dynamic Background Glows */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
@@ -172,7 +180,7 @@ export default function App() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6"
         >
           {skills.map((category, index) => (
             <motion.div
@@ -230,7 +238,7 @@ export default function App() {
           </motion.div>
         </motion.div>
 
-        <div className="flex flex-col items-center mb-0">
+        <div className="flex flex-col items-center mt-12 md:mt-6 lg:mt-0 mb-2 lg:mb-0">
           {/* The Halo Container */}
           <div className="relative w-full max-w-[800px] aspect-square flex items-center justify-center">
             {/* Dynamic background rings */}
@@ -253,7 +261,7 @@ export default function App() {
               transition={{ repeat: Infinity, duration: 75, ease: "linear" }}
             >
               {TECH_STACK.map((skill, idx) => (
-                <HaloItem key={skill.name} skill={skill} index={idx} total={TECH_STACK.length} />
+                <HaloItem key={skill.name} skill={skill} index={idx} total={TECH_STACK.length} isMobile={isMobile} />
               ))}
             </motion.div>
           </div>
