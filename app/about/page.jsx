@@ -72,7 +72,7 @@ const Card = ({ children, delay }) => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       className="p-px rounded-2xl bg-linear-to-r from-cyan-500/40 to-blue-500/20 
-        shadow-2xl hover:shadow-cyan-500/30 transition-shadow duration-500"
+        shadow-2xl hover:shadow-cyan-500/30 transition-shadow duration-500 w-full overflow-hidden"
     >
       <div className="bg-gray-900/80 backdrop-blur-xl rounded-2xl p-6 md:p-8 
         border border-indigo-700/20 hover:border-cyan-500/50 
@@ -112,13 +112,13 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden text-gray-100 pt-10 pb-20 px-6 bg-slate-950 font-sans selection:bg-cyan-500/30">
+    <div className="min-h-screen w-full overflow-hidden text-gray-100 pt-10 pb-20 sm:px-6 bg-slate-950 font-sans selection:bg-cyan-500/30 transition-colors duration-500">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
       `}</style>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative z-10 px-4">
         {/* PAGE TITLE */}
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -162,13 +162,13 @@ export default function App() {
           </motion.div>
 
           {/* Right Side Text */}
-          <div className="flex flex-col max-w-2xl text-center md:text-left">
+          <div className="flex flex-col max-w-2xl text-center md:text-left min-w-0">
             <div className="flex items-center justify-center md:justify-start mb-6 text-cyan-400">
               <Zap className="w-5 h-5 mr-2 fill-cyan-400" />
               <h2 className="text-sm font-bold tracking-[0.2em] uppercase">Bio</h2>
             </div>
 
-            <div className="text-xl md:text-2xl text-gray-300 leading-relaxed min-h-40 md:min-h-30">
+            <div className="text-lg md:text-2xl text-gray-300 leading-relaxed min-h-40 md:min-h-30">
               <Typewriter
                 strings={[
                   "I'm Abhishek, a Computer Engineering student who loves building clean UI, smooth apps, and fast backends.",
@@ -181,10 +181,10 @@ export default function App() {
         </motion.div>
 
         {/* SEPARATOR */}
-        <div className="my-24 flex items-center justify-center gap-4">
-          <div className="h-1px flex-1 bg-linear-to-r from-transparent to-indigo-500/30"></div>
-          <Award className="w-6 h-6 text-indigo-500/50" />
-          <div className="h-px flex-1 bg-linear-to-l from-transparent to-indigo-500/30"></div>
+        <div className="my-16 md:my-24 flex items-center justify-center w-full max-w-4xl mx-auto px-4 gap-4 overflow-hidden">
+          <div className="h-[2px] min-w-[60px] flex-1 bg-linear-to-r from-transparent via-indigo-500/40 to-indigo-500/80"></div>
+          <Award className="w-8 h-8 text-indigo-500 shrink-0" />
+          <div className="h-[2px] flex-1 min-w-[60px] bg-linear-to-l from-transparent via-indigo-500/40 to-indigo-500/80"></div>
         </div>
 
         {/* Background Aesthetic Elements */}
@@ -199,38 +199,38 @@ export default function App() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mt-16 mb-16 text-indigo-400 
+          className="text-3xl font-bold mt-16 mb-16 text-indigo-400 
           text-center flex items-center justify-center gap-3"
         >
-          <GraduationCap className="w-10 h-10" />
+          <GraduationCap className="w-8 h-8 md:w-10 md:h-10" />
           Academic Timeline
         </motion.h2>
 
         {/* EDUCATION CARDS */}
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
           {education.map((edu, i) => (
             <Card key={i} delay={0.1 * i}>
               <div className="flex flex-col md:flex-row justify-between items-start gap-6">
-                <div className="flex items-start gap-6 group">
+                <div className="flex items-start gap-4 md:gap-6 group min-w-0 full">
                   {/* Icon Container */}
-                  <div className={`p-4 rounded-2xl bg-linear-to-br ${edu.color} border border-white/5 shadow-xl shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`p-3 md:p-4 rounded-2xl bg-linear-to-br ${edu.color} border border-white/5 shadow-xl shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                     {edu.icon}
                   </div>
                   
-                  <div className="flex flex-col">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                  <div className="flex flex-col min-w-0 flex-1">
+                    <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 leading-light">
                       {edu.title}
                     </h3>
                     <div className="flex items-center gap-2 mt-2 text-gray-400">
-                      <div className="w-2 h-2 rounded-full bg-indigo-500"></div>
-                      <span className="text-lg font-medium">{edu.inst}</span>
+                      <div className="w-1.5 h-1.5 shrink-0 rounded-full bg-indigo-500"></div>
+                      <span className="text-base md:text-lg font-medium truncate">{edu.inst}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex-1 space-y-4">
+                <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end justify-between w-full md:w-auto gap-4 shrink-0">
                 <div 
-                  className="w-fit inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-bold tracking-[0.15em] uppercase whitespace-nowrap"
+                  className="w-fit inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-bold tracking-[0.15em] uppercase whitespace-nowrap"
                   style={{ color: edu.iconColor }}
                 >
                   <Clock size={12} />
@@ -246,10 +246,10 @@ export default function App() {
         </div>
 
         {/* CTA */}
-        <div className="mt-24 text-center">
+        <div className="mt-20 md:mt-24 text-center">
           <a 
             href="/projects" 
-            className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-linear-to-r from-cyan-600 to-blue-700 rounded-full hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
+            className="group relative inline-flex items-center justify-center px-8 md:px-10 py-4 font-bold text-white transition-all duration-300 bg-linear-to-r from-cyan-600 to-blue-700 rounded-full hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
           >
             <span className="relative flex items-center gap-2">
               See My Projects
