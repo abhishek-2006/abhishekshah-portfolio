@@ -10,7 +10,7 @@ export const metadata = {
     alternates : "https://abhishekshah-portfolio.vercel.app/tictactoe"
 };
 
-import TicTacToePage from "TicTacToePage";
+import TicTacToePage from "./TicTacToePage";
 
 export default function page() {
     return <TicTacToePage />
