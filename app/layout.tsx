@@ -6,8 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 const siteConfig = {
   name: "Abhishek Shah",
   title: "Abhishek Shah - Professional Portfolio & Full-Stack Developer",
-  description:
-    "Welcome to my portfolio! I'm Abhishek Shah, a passionate full-stack developer and mobile game designer. Explore my projects, skills, and get in touch to collaborate on exciting ventures. Discover high-performance projects and innovative solutions. Connect to collaborate on exciting ventures in web and game development.",
+  description: "Abhishek Shah - Full-stack developer. Explore projects, skills, and contact details to collaborate on web and app development.",
   url: "https://abhishekshah-portfolio.vercel.app",
   image: "https://abhishekshah-portfolio.vercel.app/profile.jpg",
   keywords: [
@@ -122,7 +121,7 @@ function JsonLd() {
       "@type": "WebSite",
       "name": "Abhishek Shah Portfolio",
       "url": "https://abhishekshah-portfolio.vercel.app",
-      "description": "Welcome to my portfolio! I'm Abhishek Shah, a passionate full-stack developer. Explore my projects, skills, and get in touch to collaborate on exciting ventures. Discover high-performance projects and innovative solutions. Connect to collaborate on exciting ventures in web and game development.",
+      "description": "Abhishek Shah - Full-stack developer. Explore projects, skills, and contact details to collaborate on web and app development.",
       "keywords": "Abhishek, Abhishek Shah, Portfolio, Vercel, Portfolio Vercel, Abhishek Shah Portfolio, Projects, Abhishek Shah Projects, Software Engineer, Web Developer, Flutter Developer, TicTacToe, TicTacToe Game, Bardoli, Gujarat",
       "potentialAction": {
         "@type": "SearchAction",
@@ -138,7 +137,7 @@ function JsonLd() {
       "name" : "TicTacToe Game",
       "operatingSystem" : "Android",
       "applicationCategory" : "Game",
-      "description" : "TicTacToe is a simple and addictive game developed by Abhishek Shah. It offers a fun and engaging experience for players of all ages. The game features a clean and intuitive interface, allowing users to easily play against the computer or with friends. With its smooth gameplay and strategic elements, TicTacToe provides hours of entertainment. Download now and challenge yourself to become the ultimate TicTacToe champion!",
+      "description": "TicTacToe by Abhishek Shah is a clean, fast, and strategic game. Play against AI or friends and enjoy a smooth classic gameplay experience.",
       "image" : "https://abhishekshah-portfolio.vercel.app/tictactoe-logo.png",
     },
   ];

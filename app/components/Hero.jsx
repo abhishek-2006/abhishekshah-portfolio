@@ -144,12 +144,12 @@ export default function App() {
               Open to New Opportunities
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.1] mb-6 text-white tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.1] mb-6 text-white tracking-tight">
               Hi, I’m{" "}
               <span className="bg-clip-text text-transparent bg-linear-to-r from-cyan-400 via-blue-400 to-indigo-400">
                 Abhishek Shah
               </span>
-            </h1>
+            </h2>
 
             <div className="text-xl md:text-3xl text-slate-400 mb-8 font-medium min-h-10">
               Focused on{" "}
