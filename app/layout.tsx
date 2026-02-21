@@ -12,6 +12,7 @@ const siteConfig = {
   keywords: [
     "Abhishek", 
     "Abhishek Shah", 
+    "About Abhishek Shah",
     "Portfolio", 
     "Vercel", 
     "Portfolio Vercel", 
@@ -136,7 +137,7 @@ function JsonLd() {
       "@type" : "SoftwareApplication",
       "name" : "TicTacToe Game",
       "operatingSystem" : "Android",
-      "applicationCategory" : "Game",
+      "applicationCategory" : "GameApplication",
       "description": "TicTacToe by Abhishek Shah is a clean, fast, and strategic game. Play against AI or friends and enjoy a smooth classic gameplay experience.",
       "image" : "https://abhishekshah-portfolio.vercel.app/tictactoe-logo.png",
     },
@@ -145,7 +146,13 @@ function JsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify([personSchema, websiteSchema, gameSchema]) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify([
+          ...personSchema, 
+          ...websiteSchema, 
+          ...gameSchema
+        ]), 
+      }}
     />
   );
 }
@@ -160,7 +167,7 @@ export default function RootLayout({
       <body className="bg-[#1a1a1a] text-white">
         <JsonLd />
         <Navbar/>
-        <div className="pt-[0px]">{children}</div>
+        <div className="pt-0">{children}</div>
         <Analytics/>
       </body>
     </html>
