@@ -12,13 +12,18 @@ const siteConfig = {
   keywords: [
     "Abhishek", 
     "Abhishek Shah", 
+    "Abhishek Portfolio",
+    "About Abhishek",
     "About Abhishek Shah",
+    "Abhishek Shah Skills",
+    "Abhishek Skills",
     "Portfolio", 
     "Vercel", 
     "Portfolio Vercel", 
     "Abhishek Shah Portfolio", 
     "Projects", 
     "Abhishek Shah Projects",
+    "Abhishek Projects",
     "Software Engineer", 
     "Web Developer",
     "Flutter Developer", 
@@ -30,10 +35,6 @@ const siteConfig = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#030712" },
-  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -92,7 +93,7 @@ export const metadata: Metadata = {
 
   other: {
     "platform": "Vercel",
-    generator: "Next.js",
+    "generator": "Next.js",
     "author": "Abhishek Shah",
     "publisher": "Abhishek Shah",
     "theme-color": "#1a1a1a",
@@ -123,7 +124,7 @@ function JsonLd() {
       "name": "Abhishek Shah Portfolio",
       "url": "https://abhishekshah-portfolio.vercel.app",
       "description": "Abhishek Shah - Full-stack developer. Explore projects, skills, and contact details to collaborate on web and app development.",
-      "keywords": "Abhishek, Abhishek Shah, Portfolio, Vercel, Portfolio Vercel, Abhishek Shah Portfolio, Projects, Abhishek Shah Projects, Software Engineer, Web Developer, Flutter Developer, TicTacToe, TicTacToe Game, Bardoli, Gujarat",
+      "keywords": "Abhishek, Abhishek Shah, Portfolio, Abhishek Portfolio, About Abhishek, About Abhishek Shah, Abhishek Shah Skills, Abhishek Skills, Vercel, Portfolio Vercel, Abhishek Shah Portfolio, Projects, Abhishek Shah Projects, Abhishek Projects, Software Engineer, Web Developer, Flutter Developer, TicTacToe, TicTacToe Game, Bardoli, Gujarat",
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://abhishekshah-portfolio.vercel.app/search?q={search_term_string}",

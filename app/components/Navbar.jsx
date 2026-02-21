@@ -5,11 +5,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
-export const metadata = {
-  title: "Navbar - Abhishek Shah",
-  description: "Navigate through my portfolio with ease using the responsive navbar. Access Home, About Me, Skills, Projects, and Contact sections seamlessly on any device.",
-};
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
