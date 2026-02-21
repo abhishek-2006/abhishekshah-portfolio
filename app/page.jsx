@@ -5,6 +5,9 @@ import MiniAbout from "@/app/components/MiniAbout";
 export const metadata = {
   title: "Home - Abhishek Shah",
   description: "Abhishek Shah - Full-stack developer. Explore projects, skills, and contact details to collaborate on web and app development.",
+  alternates: {
+    canonical: "https://abhishekshah-portfolio.vercel.app/"
+  }
 };
 
 export default function Home() {

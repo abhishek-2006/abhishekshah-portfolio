@@ -1,7 +1,9 @@
 export const metadata = {
     title: 'Contact - Abhishek Shah',
     description: "Get in touch with Abhishek Shah for projects or collaborations.",
-    alternates: 'https://abhishekshah-portfolio.vercel.app/contact',
+    alternates: {
+      canonical: "https://abhishekshah-portfolio.vercel.app/contact"
+    }
 };
 
 import ContactPage from "./Contact";
