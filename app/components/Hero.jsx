@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { 
   Github, 
@@ -15,6 +15,21 @@ import {
 
 import Image from "next/image";
 import { FaXTwitter as Twitter } from "react-icons/fa6";
+
+// Static module-level constants — defined outside the component to guarantee
+// identical values between SSR and client hydration (prevents hydration mismatch)
+const ROLES = [
+  "Flutter Development",
+  "Android App Development",
+  "Full-Stack Development",
+  "Web Development"
+];
+
+const SOCIAL_LINKS = [
+  { Icon: Github, url: "https://github.com/abhishek-2006",                    label: "Abhishek Shah on GitHub",         size: 22 },
+  { Icon: Linkedin, url: "https://www.linkedin.com/in/abhishekshah-dev/",      label: "Abhishek Shah on LinkedIn",       size: 22 },
+  { Icon: Twitter, url: "https://x.com/shahabhishek409",                       label: "Abhishek Shah on X (Twitter)",    size: 20 },
+];
 
 const Typewriter = ({ strings, typeSpeed = 50, backSpeed = 30, delayBetween = 2000 }) => {
   const [index, setIndex] = useState(0);
@@ -52,12 +67,6 @@ const Typewriter = ({ strings, typeSpeed = 50, backSpeed = 30, delayBetween = 20
 };
 
 export default function App() {
-  const roles = useMemo(() => [
-    "Flutter Development",
-    "Android App Development",
-    "Full-Stack Development",
-    "Web Development"
-  ], []);
 
   const imageSchema = {
     "@context": "https://schema.org",
@@ -161,7 +170,7 @@ export default function App() {
             <div className="text-xl md:text-3xl text-slate-400 mb-8 font-medium min-h-10">
               Focused on{" "}
               <span className="text-cyan-400 font-bold border-b-2 border-cyan-500/20 pb-1">
-                <Typewriter strings={roles} />
+                <Typewriter strings={ROLES} />
               </span>
             </div>
 
@@ -187,20 +196,16 @@ export default function App() {
               </a>
 
               <div className="flex gap-6 items-center px-4 py-2">
-                {[
-                  { icon: <Github size={22} />, url: "https://github.com/abhishek-2006" },
-                  { icon: <Linkedin size={22} />, url: "https://www.linkedin.com/in/abhishekshah-dev/" },
-                  { icon: <Twitter size={20} />, url: "https://x.com/shahabhishek409" }
-                ].map((social, idx) => (
+                {SOCIAL_LINKS.map(({ Icon, url, label, size }) => (
                   <a
-                    key={idx}
-                    href={social.url}
+                    key={label}
+                    href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-slate-400 hover:text-cyan-400 transition-colors"
-                    aria-label="Social Link"
+                    aria-label={label}
                   >
-                    {social.icon}
+                    <Icon size={size} />
                   </a>
                 ))}
               </div>

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SignatureBar from "../components/SignatureBar";
 import ThreeBackgroundDynamic from "../components/ThreeBackgroundDynamic";
-import { Zap, Clock, GraduationCap, School, BookOpen, Award, ChevronRight } from 'lucide-react';
+import { Zap, Clock, GraduationCap, School, Award, ChevronRight } from 'lucide-react';
 
 const COLORS = {
   cyan400: "#22d3ee",
@@ -102,14 +102,6 @@ export default function AboutPage() {
       detail: "CGPA: 8.40",
       icon: <School />,
       iconColor: COLORS.indigo500
-    },
-    {
-      title: "Secondary (10th)",
-      inst: "B.A.B.S. English Medium School",
-      year: "Completed in 2022",
-      detail: "Percentile: 75.23 PR",
-      icon: <BookOpen />,
-      iconColor: COLORS.slate400
     },
   ];
 
