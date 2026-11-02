@@ -70,14 +70,7 @@ export default function App() {
   const [version, setVersion] = useState("v1.3.0");
   const [isMounted, setIsMounted] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
-
-  let os = "android";
-  if (typeof window !== "undefined") {
-    const ua = window.navigator.userAgent.toLowerCase();
-    if (ua.includes("windows")) os = "windows";
-    else if (ua.includes("android")) os = "android";
-    else os = "other";
-  }
+  const [os, setOs] = useState("android");
 
   const game = {
     title: "TicTacToe",
@@ -118,7 +111,13 @@ export default function App() {
   };
 
   useEffect(() => {
-    const mountTimer = setTimeout(() => setIsMounted(true), 0);
+    setIsMounted(true);
+    if (typeof window !== "undefined") {
+      const ua = window.navigator.userAgent.toLowerCase();
+      if (ua.includes("windows")) setOs("windows");
+      else if (ua.includes("android")) setOs("android");
+      else setOs("other");
+    }
 
     const fetchRelease = async () => {
       try {

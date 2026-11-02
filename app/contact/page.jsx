@@ -7,13 +7,13 @@ export const metadata = {
     canonical: "https://abhishekshah-portfolio.vercel.app/contact"
   },
   openGraph: {
-      title: 'Contact | Abhishek Shah',
-      description: "Contact full-stack engineer Abhishek Shah. Get in touch for custom web development, Flutter mobile apps, freelance projects, and technical collaborations.",
-      url: "https://abhishekshah-portfolio.vercel.app/contact",
-      locale: "en_US",
-      images: [{ url: "https://abhishekshah-portfolio.vercel.app/abhishek-shah-full-stack-developer.jpg", width: 1200, height: 630, alt: "Abhishek Shah" }],
-      type: "website",
-      siteName: "Abhishek Shah Portfolio"
+    title: 'Contact | Abhishek Shah',
+    description: "Contact full-stack engineer Abhishek Shah. Get in touch for custom web development, Flutter mobile apps, freelance projects, and technical collaborations.",
+    url: "https://abhishekshah-portfolio.vercel.app/contact",
+    locale: "en_US",
+    images: [{ url: "https://abhishekshah-portfolio.vercel.app/abhishek-shah-full-stack-developer.jpg", width: 1200, height: 630, alt: "Abhishek Shah" }],
+    type: "website",
+    siteName: "Abhishek Shah Portfolio"
   },
   keywords: [
     "Contact Abhishek",
@@ -71,16 +71,16 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
     bingBot: {
       index: true,
       follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   authors: [{ name: "Abhishek Shah", url: "https://abhishekshah-portfolio.vercel.app" }],
@@ -139,10 +139,10 @@ function ContactJsonLd() {
 }
 
 export default function page() {
-    return (
-        <>
-            <ContactJsonLd />
-            <ContactPage />
-        </>
-    );
+  return (
+    <>
+      <ContactJsonLd />
+      <ContactPage />
+    </>
+  );
 }

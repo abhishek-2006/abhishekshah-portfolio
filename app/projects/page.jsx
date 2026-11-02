@@ -1,72 +1,72 @@
 export const metadata = {
+  title: "Projects & Portfolio | Abhishek Shah",
+  description: "Explore Abhishek Shah’s portfolio of real-world projects, featuring full-stack applications, modern web solutions, mobile apps, and scalable systems.",
+  alternates: {
+    canonical: "https://abhishekshah-portfolio.vercel.app/projects",
+  },
+  keywords: [
+    "Abhishek Projects",
+    "Abhishek Shah projects",
+    "Abhishek Shah projects portfolio",
+    "Abhishek Shah project showcase",
+    "Abhishek Shah portfolio projects",
+    "Abhishek Shah development projects",
+    "Abhishek Shah portfolio",
+    "Full stack developer projects",
+    "Web development projects",
+    "Software development projects",
+    "Mobile app development projects",
+    "React projects",
+    "Flutter projects",
+    "Native Android projects",
+    "Node.js projects",
+    "Next.js projects",
+    "JavaScript projects",
+    "TypeScript projects",
+    "Abhishek Shah web solutions",
+    "Abhishek Shah real-world projects",
+    "Abhishek Shah coding projects",
+    "Full stack projects",
+    "Modern web projects",
+    "Abhishek Shah development work",
+    "Frontend projects",
+    "Backend projects"
+  ],
+  openGraph: {
     title: "Projects & Portfolio | Abhishek Shah",
     description: "Explore Abhishek Shah’s portfolio of real-world projects, featuring full-stack applications, modern web solutions, mobile apps, and scalable systems.",
-    alternates: {
-      canonical: "https://abhishekshah-portfolio.vercel.app/projects",
-    },
-    keywords: [
-      "Abhishek Projects",
-      "Abhishek Shah projects",
-      "Abhishek Shah projects portfolio",
-      "Abhishek Shah project showcase",
-      "Abhishek Shah portfolio projects",
-      "Abhishek Shah development projects",
-      "Abhishek Shah portfolio",
-      "Full stack developer projects",
-      "Web development projects",
-      "Software development projects",
-      "Mobile app development projects",
-      "React projects",
-      "Flutter projects",
-      "Native Android projects",
-      "Node.js projects",
-      "Next.js projects",
-      "JavaScript projects",
-      "TypeScript projects",
-      "Abhishek Shah web solutions",
-      "Abhishek Shah real-world projects",
-      "Abhishek Shah coding projects",
-      "Full stack projects",
-      "Modern web projects",
-      "Abhishek Shah development work",
-      "Frontend projects",
-      "Backend projects"
-    ],
-    openGraph: {
-      title: "Projects & Portfolio | Abhishek Shah",
-      description: "Explore Abhishek Shah’s portfolio of real-world projects, featuring full-stack applications, modern web solutions, mobile apps, and scalable systems.",
-      url: "https://abhishekshah-portfolio.vercel.app/projects",
-      siteName: "Abhishek Shah Portfolio",
-      locale: "en_US",
-      images: [{ url: "https://abhishekshah-portfolio.vercel.app/abhishek-shah-full-stack-developer.jpg", width: 1200, height: 630, alt: "Abhishek Shah Projects Portfolio" }],
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Projects & Portfolio | Abhishek Shah",
-      description: "Explore Abhishek Shah’s portfolio of real-world projects, featuring full-stack applications, modern web solutions, mobile apps, and scalable systems.",
-      images: ["https://abhishekshah-portfolio.vercel.app/abhishek-shah-full-stack-developer.jpg"],
-      creator: "@shahabhishek409",
-    },
-    robots: {
+    url: "https://abhishekshah-portfolio.vercel.app/projects",
+    siteName: "Abhishek Shah Portfolio",
+    locale: "en_US",
+    images: [{ url: "https://abhishekshah-portfolio.vercel.app/abhishek-shah-full-stack-developer.jpg", width: 1200, height: 630, alt: "Abhishek Shah Projects Portfolio" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Projects & Portfolio | Abhishek Shah",
+    description: "Explore Abhishek Shah’s portfolio of real-world projects, featuring full-stack applications, modern web solutions, mobile apps, and scalable systems.",
+    images: ["https://abhishekshah-portfolio.vercel.app/abhishek-shah-full-stack-developer.jpg"],
+    creator: "@shahabhishek409",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
       index: true,
       follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-      bingBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
-    authors: [{ name: "Abhishek Shah", url: "https://abhishekshah-portfolio.vercel.app" }],
+    bingBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  authors: [{ name: "Abhishek Shah", url: "https://abhishekshah-portfolio.vercel.app" }],
 };
 
 function ProjectsJsonLd() {
@@ -185,7 +185,7 @@ async function getProjects() {
 
 export default async function page() {
   const initialProjects = await getProjects();
-    
+
   return (
     <>
       <ProjectsJsonLd />

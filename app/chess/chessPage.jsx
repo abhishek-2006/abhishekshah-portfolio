@@ -48,6 +48,12 @@ export default function App() {
           previewImage: action.payload,
         };
 
+      case "SET_OS":
+        return {
+          ...state,
+          os: action.payload,
+        };
+
       default:
         return state;
     }
@@ -67,6 +73,7 @@ export default function App() {
     version: "v2.0.0",
     isMounted: false,
     previewImage: null,
+    os: "android",
   };
   
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -78,16 +85,8 @@ export default function App() {
     version,
     isMounted,
     previewImage,
+    os,
   } = state;
-
-
-  let os = "android";
-  if (typeof window !== "undefined") {
-    const ua = window.navigator.userAgent.toLowerCase();
-    if (ua.includes("windows")) os = "windows";
-    else if (ua.includes("android")) os = "android";
-    else os = "other";
-  }
 
   const game = {
     title: "Chess",
@@ -121,7 +120,13 @@ export default function App() {
   };
 
   useEffect(() => {
-    const mountTimer = setTimeout(() => dispatch({ type: "SET_MOUNTED", payload: true }), 0);
+    dispatch({ type: "SET_MOUNTED", payload: true });
+    if (typeof window !== "undefined") {
+      const ua = window.navigator.userAgent.toLowerCase();
+      if (ua.includes("windows")) dispatch({ type: "SET_OS", payload: "windows" });
+      else if (ua.includes("android")) dispatch({ type: "SET_OS", payload: "android" });
+      else dispatch({ type: "SET_OS", payload: "other" });
+    }
 
     const fetchRelease = async () => {
       try {

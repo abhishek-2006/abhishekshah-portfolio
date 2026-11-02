@@ -31,6 +31,7 @@ export default function ContactPage() {
       email: formData.get("email"),
       subject: formData.get("subject"),
       message: formData.get("message"),
+      _gotcha: formData.get("_gotcha"),
     };
 
     try {

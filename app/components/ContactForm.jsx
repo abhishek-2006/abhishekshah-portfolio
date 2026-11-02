@@ -13,6 +13,16 @@ export default function ContactForm({ formState, handleSubmit, colors }) {
         >
             <h2 className="cursor-pointer text-2xl md:text-3xl font-semibold mb-6 md:mb-8 drop-shadow-md">Send a Message</h2>
 
+            {/* Anti-spam honeypot */}
+            <input
+              type="text"
+              name="_gotcha"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden absolute -left-[9999px]"
+              aria-hidden="true"
+            />
+
             <div className="space-y-4 md:space-y-6" style={{ perspective: 800 }}>
                 <TiltWrapper isClickable={true} depth={10}>
                     <label htmlFor="name" className="sr-only">
