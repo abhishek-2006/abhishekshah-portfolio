@@ -6,8 +6,8 @@ import TechnicalPhilosophy from "@/app/components/TechnicalPhilosophy";
 import FAQ from "@/app/components/FAQ";
 
 export const metadata = {
-  title: "Abhishek Shah - Full-Stack Developer Portfolio",
-  description: "Abhishek Shah - Professional full-stack developer. Explore projects, skills, games, and contact details. Specializing in MERN Stack, Flutter, and modern web technologies.",
+  title: "Abhishek Shah | Full-Stack Developer & Software Engineer",
+  description: "Abhishek Shah is a Full-Stack Developer & Software Engineer from Bardoli, Gujarat, India. Explore his projects, skills, games, and contact details. Specializing in MERN Stack, Next.js, Flutter, and Android development.",
   keywords: [
     "Abhishek",
     "Abhishek Shah",

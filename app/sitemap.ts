@@ -8,50 +8,56 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: '/',
       changeFrequency: 'monthly' as const,
-      priority: 1,
+      priority: 1.0,
+      lastModified: '2025-01-15',
     },
     {
       url: '/about',
       changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: '/skills',
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
+      priority: 0.9,
+      lastModified: '2025-01-15',
     },
     {
       url: '/projects',
       changeFrequency: 'weekly' as const,
+      priority: 0.9,
+      lastModified: '2025-01-15',
+    },
+    {
+      url: '/skills',
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
-    },
-    {
-      url: '/games',
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: '/tictactoe',
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: '/chess',
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
+      lastModified: '2025-01-15',
     },
     {
       url: '/contact',
       changeFrequency: 'monthly' as const,
+      priority: 0.8,
+      lastModified: '2025-01-15',
+    },
+    {
+      url: '/games',
+      changeFrequency: 'monthly' as const,
       priority: 0.7,
+      lastModified: '2025-01-15',
+    },
+    {
+      url: '/tictactoe',
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+      lastModified: '2025-01-15',
+    },
+    {
+      url: '/chess',
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+      lastModified: '2025-01-15',
     },
   ]
 
-  const now = new Date();
-
   return routes.map((route) => ({
     url: `${baseUrl}${route.url}`,
-    lastModified: now,
+    lastModified: route.lastModified,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }))
