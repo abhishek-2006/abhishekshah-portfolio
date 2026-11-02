@@ -104,7 +104,7 @@ function ContactJsonLd() {
         "sameAs": [
           "https://github.com/abhishek-2006",
           "https://linkedin.com/in/abhishekshah-dev/",
-          "https://twitter.com/AbhishekShah2006",
+          "https://x.com/shahabhishek409",
           "https://instagram.com/abhishekshah_112"
         ],
       }

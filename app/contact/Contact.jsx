@@ -153,7 +153,7 @@ export default function ContactPage() {
                         { icon: <Github size={18} />, label: "GitHub", url: "https://github.com/abhishek-2006" },
                         { icon: <Instagram size={18} />, label: "Instagram", url: "https://instagram.com/abhishekshah_112" },
                         { icon: <Linkedin size={18} />, label: "LinkedIn", url: "https://linkedin.com/in/abhishekshah-dev/" },
-                        { icon: <Twitter size={18} />, label: "Twitter", url: "https://twitter.com/shahabhishek409" }
+                        { icon: <Twitter size={18} />, label: "Twitter", url: "https://x.com/shahabhishek409" }
 
                       ].map((social) => (
                         <TiltWrapper key={social.label} isClickable={true} depth={20}>

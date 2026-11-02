@@ -54,13 +54,6 @@
       "endYear": 2025,
       "gpa": "8.40",
       "details": "Completed diploma in computer engineering with strong GPA"
-    },
-    {
-      "degree": "Secondary School Certificate (SSC)",
-      "institution": "Gujarat Board",
-      "year": 2022,
-      "percentile": "75.23",
-      "details": "10th grade completed with 75.23 percentile"
     }
   ],
   "skills": {
