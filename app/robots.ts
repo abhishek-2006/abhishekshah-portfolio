@@ -4,24 +4,38 @@ import { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
     const baseUrl = "https://abhishekshah-portfolio.vercel.app";
 
-    return{
+    return {
         rules: [
-            {
-                userAgent: "Googlebot",
-                allow: "/",
-                disallow: "/api",
-            },
-            {
-                userAgent: "Bingbot",
-                allow: "/",
-                disallow: "/api",
-            },
-            {
-                userAgent: "*",
-                allow: "/",
-                disallow: "/api",
-            }
-        ],
-        sitemap: `${baseUrl}/sitemap.xml`,
-    }
+        {
+            userAgent: "*",
+            allow: "/",
+            disallow: "/api/",
+        },
+        {
+            userAgent: "OAI-SearchBot",
+            allow: "/",
+        },
+        {
+            userAgent: "Claude-SearchBot",
+            allow: "/",
+        },
+        {
+            userAgent: "Claude-User",
+            allow: "/",
+        },
+        {
+            userAgent: "PerplexityBot",
+            allow: "/",
+        },
+        {
+            userAgent: "GPTBot",
+            allow: "/",
+        },
+        {
+            userAgent: "Google-Extended",
+            allow: "/",
+        },
+    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
+    };
 }
