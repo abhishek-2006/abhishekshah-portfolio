@@ -3,8 +3,6 @@ export const metadata = {
   description: "Explore Abhishek Shah\'s technical skills including Frontend, Backend, Mobile Development, and Database technologies like React, Next.js, Node.js, and Flutter.",
   keywords: [
     "Abhishek Shah Skills",
-    "Abhishek Badola Skills",
-    "Abhishek Jain Skills",
     "Frontend Development Skills",
     "Backend Development Skills",
     "Mobile App Development",
@@ -21,7 +19,6 @@ export const metadata = {
     "React Developer",
     "Next.js Developer",
     "Node.js Developer",
-    "Flutter Developer",
     "Database Management"
   ],
   alternates: {
