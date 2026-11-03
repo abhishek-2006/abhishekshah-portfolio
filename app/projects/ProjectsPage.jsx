@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState, useMemo } from "react";
+import Link from "next/link";
 import SignatureBar from "../components/SignatureBar";
 import SkillsThreeScene from "../components/SkillsThreeScene";
 import { m, AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
@@ -11,7 +12,8 @@ import {
   Layers, 
   Code,
   Gamepad2,
-  Download
+  Download,
+  ArrowRight
 } from "lucide-react";
 
 export default function ProjectsPage({ initialProjects }) {
@@ -31,19 +33,25 @@ export default function ProjectsPage({ initialProjects }) {
         }
 
         const processedProjects = githubData.map(repo => {
-          if (repo.name.toLowerCase().includes("tictactoe")) {
+          const isTicTacToe = repo.name.toLowerCase().includes("tictactoe");
+          const isChess = repo.name.toLowerCase().includes("chess");
+          const slug = repo.slug || (isTicTacToe ? "tictactoe" : isChess ? "chess" : repo.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""));
+
+          if (isTicTacToe) {
             return {
               ...repo,
               name: "TicTacToe",
+              slug: "tictactoe",
               liveUrl: "/tictactoe",
               isGame: true,
               logo: "/tictactoe-logo.png"
             };
           }
-          if (repo.name.toLowerCase().includes("chess")) {
+          if (isChess) {
             return {
               ...repo,
               name: "Chess",
+              slug: "chess",
               liveUrl: "/chess",
               isGame: true,
               logo: "/chess-logo.png"
@@ -51,6 +59,7 @@ export default function ProjectsPage({ initialProjects }) {
           }
           return {
             ...repo,
+            slug: slug,
             tech: repo.tech || ["Web"],
             isGame: repo.isGame || false
           };
@@ -66,9 +75,10 @@ export default function ProjectsPage({ initialProjects }) {
         console.error("Fetch error:", err);
         // Fallback mock data if GitHub API fails
         setProjects([
-          { name: "TicTacToe", description: "Premium Android edition with adaptive AI.", tech: ["Flutter", "Dart", "Android"], url: "#", liveUrl: "/tictactoe", isGame: true, logo: "/tictactoe-logo.png" },
-          { name: "Hotel Management System", description: "Professional-grade administrative portal.", tech: ["PHP", "MySQL", "Bootstrap"], url: "#", liveUrl: "#" },
-          { name: "Currency Converter", description: "Real-time exchange rates via API.", tech: ["JavaScript", "REST API", "Tailwind"], url: "#", liveUrl: "https://abhishek-2006.github.io/currency-converter" }
+          { name: "Chess", slug: "chess", description: "A modern chess application built with Flutter.", tech: ["Flutter", "Dart", "Cross-Platform"], url: "https://github.com/abhishek-2006/Chess", liveUrl: "/chess", isGame: true, logo: "/chess-logo.png" },
+          { name: "TicTacToe", slug: "tictactoe", description: "Premium Android edition with adaptive AI.", tech: ["Flutter", "Dart", "Android"], url: "https://github.com/abhishek-2006/Tictactoe", liveUrl: "/tictactoe", isGame: true, logo: "/tictactoe-logo.png" },
+          { name: "Currency Converter", slug: "currency-converter", description: "Real-time exchange rates via API.", tech: ["JavaScript", "REST API", "TailwindCSS"], url: "https://github.com/abhishek-2006/Currency-Converter", liveUrl: "https://abhishek-2006.github.io/Currency-Converter" },
+          { name: "Hotel Management System", slug: "hotel-management-system", description: "Professional-grade administrative portal.", tech: ["PHP", "MySQL", "Bootstrap"], url: "https://github.com/abhishek-2006", liveUrl: null }
         ]);
       }
     }
@@ -79,14 +89,14 @@ export default function ProjectsPage({ initialProjects }) {
   const allTags = useMemo(() => {
     if (!projects) return ["All"];
     const tags = new Set(["All"]);
-    projects.forEach(p => p.tech.forEach(t => tags.add(t)));
+    projects.forEach(p => p.tech?.forEach(t => tags.add(t)));
     return Array.from(tags);
   }, [projects]);
 
   const filteredProjects = useMemo(() => {
     if (!projects) return [];
     if (selectedTag === "All") return projects;
-    return projects.filter(p => p.tech.includes(selectedTag));
+    return projects.filter(p => p.tech?.includes(selectedTag));
   }, [projects, selectedTag]);
 
   return (
@@ -168,7 +178,7 @@ export default function ProjectsPage({ initialProjects }) {
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, i) => (
                 <m.div
-                  key={project.name}
+                  key={project.slug || project.name}
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -195,9 +205,14 @@ export default function ProjectsPage({ initialProjects }) {
                       <Layers className="text-white/5 size-12 -mr-4 -mt-4 group-hover:text-white/10 transition-colors duration-500" />
                     </div>
 
-                    <h2 className="text-2xl font-semibold mb-3 text-white group-hover:text-cyan-400 transition-colors">
-                      {project.name}
-                    </h2>
+                    <Link 
+                      href={`/projects/${project.slug}`}
+                      className="group/title block"
+                    >
+                      <h2 className="text-2xl font-semibold mb-3 text-white group-hover/title:text-cyan-400 transition-colors">
+                        {project.name}
+                      </h2>
+                    </Link>
 
                     <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-4 font-medium">
                       {project.description || "No description provided."}
@@ -205,7 +220,7 @@ export default function ProjectsPage({ initialProjects }) {
 
                     {/* Tech Stack */}
                     <div className="flex flex-wrap gap-2 mb-8 mt-auto">
-                      {project.tech.map((lang) => (
+                      {project.tech?.map((lang) => (
                         <span
                           key={lang}
                           className="text-[10px] uppercase tracking-wider px-3 py-1 rounded-lg bg-white/5 text-slate-300 font-bold border border-white/10"
@@ -216,25 +231,32 @@ export default function ProjectsPage({ initialProjects }) {
                     </div>
 
                     {/* Links */}
-                    <div className="flex items-center gap-6 pt-6 border-t border-white/5">
+                    <div className="flex items-center gap-4 pt-6 border-t border-white/5">
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
-                          className="flex items-center gap-2 text-sm font-bold text-white hover:text-cyan-400 transition-colors"
+                          className="flex items-center gap-1.5 text-xs font-bold text-white hover:text-cyan-400 transition-colors"
                         >
-                          {project.isGame ? <Download size={16} /> : <ExternalLink size={16} />}
-                          {project.isGame ? "Download APK" : "Live Demo"}
+                          {project.isGame ? <Download size={14} /> : <ExternalLink size={14} />}
+                          {project.isGame ? "APK" : "Demo"}
                         </a>
                       )}
                       <a
                         href={project.url ?? project.html_url ?? "#"}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-white transition-colors"
+                        className="flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-white transition-colors"
                       >
-                        <Github size={16} />
+                        <Github size={14} />
                         Source
                       </a>
+
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors ml-auto"
+                      >
+                        Details <ArrowRight size={13} />
+                      </Link>
                     </div>
                   </div>
                   

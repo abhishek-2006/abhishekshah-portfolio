@@ -166,7 +166,7 @@ export default function App() {
       }
     };
     fetchRelease();
-    return () => clearTimeout(mountTimer);
+
   }, []);
 
   // Favicon Swap Logic

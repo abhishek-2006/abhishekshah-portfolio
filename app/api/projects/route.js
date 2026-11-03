@@ -1,51 +1,20 @@
 import { NextResponse } from "next/server";
+import { PROJECTS_DATA, normalizeSlug } from "../../data/projectsData";
 
-const FALLBACK_PROJECTS = [
-  {
-    name: "Chess",
-    description: "A modern, beautiful, and feature-rich chess application. Built with Flutter for cross-platform play.",
-    url: "https://github.com/abhishek-2006/Chess",
-    liveUrl: "/chess",
-    tech: ["Flutter", "Dart", "Cross-Platform"],
-    isGame: true,
-    icon: "game",
-    logo: "/chess-logo.png",
-    category: "Mobile"
-  },
-  {
-    name: "TicTacToe",
-    description: "A premium Android edition of the classic game. Built with Flutter, featuring adaptive AI levels and neo-dark aesthetic.",
-    url: "https://github.com/abhishek-2006/Tictactoe",
-    liveUrl: "/tictactoe",
-    tech: ["Flutter", "Dart", "Android"],
-    isGame: true,
-    icon: "game",
-    logo: "/tictactoe-logo.png",
-    category: "Android"
-  },
-  {
-    name: "Currency Converter",
-    description: "A lightning-fast financial tool featuring real-time exchange rates via API integration. Focused on precision and speed.",
-    url: "https://github.com/abhishek-2006/Currency-Converter",
-    liveUrl: "https://abhishek-2006.github.io/Currency-Converter",
-    tech: ["JavaScript", "REST API", "TailwindCSS"],
-    isGame: false,
-    icon: null,
-    logo: "/favicon.ico",
-    category: "Web"
-  },
-  {
-    name: "Hotel Management System",
-    description: "Enterprise administrative portal for room reservations, billing, and staff tracking.",
-    url: "https://github.com/abhishek-2006",
-    liveUrl: null,
-    tech: ["PHP", "MySQL", "Bootstrap"],
-    isGame: false,
-    icon: null,
-    logo: "/favicon.ico",
-    category: "Full Stack"
-  }
-];
+const FALLBACK_PROJECTS = PROJECTS_DATA.map((p) => ({
+  name: p.name,
+  slug: p.slug,
+  description: p.description,
+  url: p.url,
+  liveUrl: p.liveUrl,
+  tech: p.tech,
+  isGame: p.isGame,
+  icon: p.isGame ? "game" : null,
+  logo: p.logo,
+  category: p.category,
+  stars: p.stats?.stars || 0,
+  forks: p.stats?.forks || 0,
+}));
 
 export async function GET() {
   try {
@@ -101,8 +70,15 @@ export async function GET() {
         else if (langs.includes("Dart") || langs.includes("Kotlin")) category = "Mobile";
         else if (langs.includes("PHP") || langs.includes("Java")) category = "Full Stack";
 
+        const slug = isTicTacToe
+          ? "tictactoe"
+          : isChess
+          ? "chess"
+          : normalizeSlug(repo.name);
+
         return {
-          name: repo.name.replace(/-/g, " "),
+          name: isTicTacToe ? "TicTacToe" : isChess ? "Chess" : repo.name.replace(/-/g, " "),
+          slug: slug,
           description: isTicTacToe
             ? "A premium Android edition of the classic game. Built with Flutter, featuring adaptive AI levels and neo-dark aesthetic."
             : isChess
@@ -115,6 +91,8 @@ export async function GET() {
           icon: isGame ? "game" : null,
           logo: isTicTacToe ? "/tictactoe-logo.png" : isChess ? "/chess-logo.png" : "/favicon.ico",
           category: category,
+          stars: repo.stargazers_count || 0,
+          forks: repo.forks_count || 0,
         };
       })
     );

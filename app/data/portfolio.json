@@ -129,6 +129,36 @@
     "totalProjects": "20+",
     "featuredProjects": 3,
     "gamesBuilt": 2,
-    "github": "https://github.com/abhishek-2006"
+    "github": "https://github.com/abhishek-2006",
+    "projects": [
+      {
+        "slug": "chess",
+        "name": "Chess",
+        "category": "Mobile Game",
+        "tech": ["Flutter", "Dart", "Cross-Platform"],
+        "url": "/projects/chess"
+      },
+      {
+        "slug": "tictactoe",
+        "name": "TicTacToe",
+        "category": "Mobile Game",
+        "tech": ["Flutter", "Dart", "Android"],
+        "url": "/projects/tictactoe"
+      },
+      {
+        "slug": "currency-converter",
+        "name": "Currency Converter",
+        "category": "Web Utility",
+        "tech": ["JavaScript", "REST API", "TailwindCSS"],
+        "url": "/projects/currency-converter"
+      },
+      {
+        "slug": "hotel-management-system",
+        "name": "Hotel Management System",
+        "category": "Full Stack",
+        "tech": ["PHP", "MySQL", "Bootstrap"],
+        "url": "/projects/hotel-management-system"
+      }
+    ]
   }
 }

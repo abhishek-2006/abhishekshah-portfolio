@@ -1,12 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import SignatureBar from "./SignatureBar";
-import { ExternalLink, Zap, Github, Gamepad2, ArrowRight } from 'lucide-react';
+import { ExternalLink, Zap, Github, Gamepad2, ArrowRight } from "lucide-react";
 
 const projects = [
   {
     title: "Chess",
+    slug: "chess",
     desc: "A modern, beautiful, and feature-rich chess application. Built with Flutter for cross-platform play.",
     tech: ["Flutter", "Dart", "Cross-Platform"],
     githubUrl: "https://github.com/abhishek-2006/Chess", 
@@ -16,6 +18,7 @@ const projects = [
   },
   {
     title: "TicTacToe",
+    slug: "tictactoe",
     desc: "A premium Android reimagining of the classic game. Features adaptive AI, Neo-Dark UI, and smooth 60FPS animations.",
     tech: ["Flutter", "Dart", "Android"],
     githubUrl: "https://github.com/abhishek-2006/Tictactoe", 
@@ -25,6 +28,7 @@ const projects = [
   },
   {
     title: "Currency Converter",
+    slug: "currency-converter",
     desc: "A lightning-fast financial tool featuring real-time exchange rates via API integration. Focused on precision and speed.",
     tech: ["JavaScript", "REST API", "TailwindCSS"],
     githubUrl: "https://github.com/abhishek-2006/Currency-Converter",
@@ -82,24 +86,35 @@ const ProjectCard = ({ project, i }) => {
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors relative z-10">
-          {project.title}
-        </h3>
+        <Link href={`/projects/${project.slug}`} className="group/title block relative z-10">
+          <h3 className="text-2xl font-bold text-white mb-4 group-hover/title:text-cyan-400 transition-colors">
+            {project.title}
+          </h3>
+        </Link>
 
         <p className="text-slate-400 text-sm leading-relaxed mb-8 grow relative z-10">
           {project.desc}
         </p>
 
-        {/* Tech Stack Chips */}
-        <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5 relative z-10 mt-auto">
-          {project.tech.map((t, idx) => (
-            <span 
-              key={idx} 
-              className="px-3 py-1 text-[9px] font-black uppercase tracking-wider rounded-lg bg-white/5 border border-white/10 text-slate-500 group-hover:text-cyan-400 transition-colors"
-            >
-              {t}
-            </span>
-          ))}
+        {/* Tech Stack Chips & Details Link */}
+        <div className="flex items-center justify-between pt-6 border-t border-white/5 relative z-10 mt-auto">
+          <div className="flex flex-wrap gap-2">
+            {project.tech.map((t, idx) => (
+              <span 
+                key={idx} 
+                className="px-3 py-1 text-[9px] font-black uppercase tracking-wider rounded-lg bg-white/5 border border-white/10 text-slate-500 group-hover:text-cyan-400 transition-colors"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <Link
+            href={`/projects/${project.slug}`}
+            className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors shrink-0 ml-2"
+          >
+            Details <ArrowRight size={13} />
+          </Link>
         </div>
 
         {/* Dynamic Hover Glow */}
@@ -147,13 +162,13 @@ export default function FeaturedProjects() {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <a 
+          <Link 
             href="/projects" 
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-black font-black text-xs tracking-widest uppercase hover:bg-cyan-400 transition-all shadow-xl active:scale-95"
           >
             View All Projects
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
         </motion.div>
       </div>
 

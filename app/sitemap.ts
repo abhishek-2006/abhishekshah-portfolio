@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-
+import { getAllProjectSlugs } from './data/projectsData'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://abhishekshah-portfolio.vercel.app'
@@ -55,7 +55,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  return routes.map((route) => ({
+  const projectRoutes = getAllProjectSlugs().map((slug) => ({
+    url: `/projects/${slug}`,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+    lastModified: '2025-01-15',
+  }))
+
+  return [...routes, ...projectRoutes].map((route) => ({
     url: `${baseUrl}${route.url}`,
     lastModified: route.lastModified,
     changeFrequency: route.changeFrequency,
